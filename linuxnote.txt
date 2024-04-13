@@ -1,0 +1,9 @@
+Here are some notes regarding linux (personal notes):
+# LINUX COMMANDS:
+- tail: read the content of a file from the last bottom
+- head: read the content of a file from the upper top
+- which: 
+- info:
+- cd: to change directory; cp or cp ~ - to the home directory; cp / to the root directory
+- mkdir: to create a new directory
+- man: 
