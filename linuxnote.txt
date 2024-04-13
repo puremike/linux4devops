@@ -1,9 +1,17 @@
-Here are some notes regarding linux (personal notes):
+Notes on Linux:
 # LINUX COMMANDS:
-- tail: read the content of a file from the last bottom
-- head: read the content of a file from the upper top
-- which: 
-- info:
-- cd: to change directory; cp or cp ~ - to the home directory; cp / to the root directory
+
+- tail: read the content of a file frm the last bottom. i.e tail -3 txt - reads the last 3 lines
+- head: read the content of a file from the upper top. i.e head -3 txt - reads the first 3 lines 
+- which: reveals the location of a command is stored (locate a command)
+- info: reveals the information of a command
+- cd: to change directory; cp or cp ~ - to the home directory; cp / - to the root directory
 - mkdir: to create a new directory
-- man: 
+- man:  reveal information of a command. Quite similar to the info command
+- pwd: this command prints the working directory
+- rm: remove a directory. using "rm --help or man rm" will bring several flags for the command
+- cp: copy from a directory to another
+- mv: mv a file from a directory to another; it also renames a file
+- echo: output a content
+
+#TREE STRUCTURE ON LINUXP
