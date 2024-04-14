@@ -21,6 +21,8 @@ Notes on Linux:
 - mkdir with flag (-p) will create several nested directories.
 	using tree command (after installing) will show the tree structure of a directory
 	
+	"sudo apt install tree" - will install tree
+	
 	tree -a (list hidden files in the tree)
 	tree -d (list only directories in the tree)
 	......'
