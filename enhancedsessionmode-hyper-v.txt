@@ -1,0 +1,27 @@
+Enable Enhanced Session Mode on Hyper-V for Ubuntu:
+
+Video to Watch: https://www.youtube.com/watch?v=mveyMZrIOzc&t=37s
+
+Script Reference: https://gist.github.com/PAGuardado/eb82ffad8aebe0c3517cdcbe7a28bcd3
+
+
+
+Steps After Installing the Ubuntu VM On Hyper-V:
+
+1. Click on RAW from the script link above and save the script as install.sh on your Download Directory
+
+2. Open the Download Directory in the terminal
+
+3. Change the file permission to enable execution
+	sudo chmod +x install.sh
+
+4. Execute the file
+	sudo ./install.sh
+
+5. Restart your VM
+
+6. Incase the EnhancedSessionMode is still OFF:
+	a. Open the powershell as an administrator
+	b. Run: Set-VM -VMName "vm-name" -EnhancedSessionTransportType HvSocket
+	c. This will enable the EnhancedSessionMode
+	d. Which will allow you to open your vm in the display resolutin that you prefer and also allow you to copy and paste from host to guest.
