@@ -13,8 +13,10 @@ Notes on Linux:
 - cp: copy from a directory to another
 - mv: mv a file from a directory to another; it also renames a file
 - echo: output a content
-
+- ls: a command for listing contents of a directory. using ls -r - reverse the order (sorting) of the content; using ls *.txt - will list every files ending with .txt extension; ls -d */ - will list only directories
 - you can use the Ctrl + R + "search term" to find quickly find previously used command
+- df: The df command stands for "disk-free" and shows available and used disk space on the linux system. df -h shows the disk space info in human readable format.
+- free: the free shows the available  memory ram information on the system. free -h also shows the info in human readable form.
 
 #TREE STRUCTURE ON LINUX
 
@@ -32,3 +34,55 @@ Notes on Linux:
 - opt: a directory showing your custom application. Example, you'll find a VBox application in this folder
 - proc: The /proc directory is a virtual filesystem that provides information about the system's processes and kernel.
 - root: The root directory (/) is the mother of all files and directories of the Linux system. 
+- boot: The boot directory hosts all the boot files for your linux operating system. It's  a don'touch directory except you know what you're doing.
+- dev: Your device directory
+- etc: The directory holding configuration files
+- run: The run directory is the mount point for tempfs filesystem in the computer memory. Temporary data used by memory are kept there.
+- sbin: Sbin directory stores the binaries required by the operating system for system management.
+- snap: The /snap directory is, by default, where the files and folders from installed snap packages appear on your system. i.e. snap install tree
+- swapfile: the directory holds: swap space in Linux is used when the amount of physical memory (RAM) is full. If the system needs more memory resources and the RAM is full, inactive pages in memory are moved to the swap space.
+- srv: The term srv stands for service. The /srv directory contains site-specific data for your Linux distribution.
+- var: /var is a standard directory that stands for "variable files.
+- sys: /sys/class` is a directory in the Linux filesystem that provides a way to interact with the kernel and access information about various classes of devices and subsystems.
+- usr: A very important directory that comprises libraries, binaries, and documentation for installed software applications. 
+
+# OTHER COMMANDS TO USE IN THE LINUX FILE SYSTEM
+- wget/curl: Wget is a command used to download files. It retrieves files using HTTP, HTTPS, and FTP protocols and is useful for downloads in unstable networks. use curl url --output "filename.ext"
+- diff: diff command shows the difference between two files.
+- vim/nano: the command helps to open and edit files using vim / nano respectively
+- useradd: A command used to add a user 
+- passwd: A command used to set password to a user
+- userdel / deluser: Delete a user account and related files. sudo deluser --remove-all-files user_name 
+- grep: Grep command is used to return. i.e. cat mytext.txt | grep es - will return contents with es; ls grep 01 will return files or directory with 01
+- history: Bring back all the commands you've been using. You can also use a reverse search by typing Ctrl + R
+
+
+# LINUX INODE (/df -i | /ls -i | /stat | /chmod | /In)
+- stat: running: stat filename will reveal the metadata of the file
+
+# LINUX TERMINAL FILE DESCRIPTORS AND REDIRECTIONS
+A file descriptor (FD, less frequently fildes) is a process-unique identifier (handle) for a file or other input/output resource, such as a pipe or network socket. Here are the three file descriptors:
+	1. Standard In		stdin	0	Input from the keyboard
+	2. Standard Out		stdout	1	Output to the console
+	3. Standard Error	stderr	2	Error output to the console
+	
+Redirections: Redirection allows commands' file handles to be duplicated, opened, closed, made to refer to different files, and can change the files the command reads from and writes to. Redirection may also be used to modify file handles in the current shell execution environment.
+	"find ./ -name newfile 2> stderr.txt" - It will redirect the error (stderr (2) - one of the 3 file descriptor) into the stderr.txt file and print to console the file path of the newfile.
+
+- ps: The Process Status (ps) command in Linux is a powerful tool that allows you to view information about the processes running on your Linux system. We can also use the top or htop (after installing) to check all the processes running on the linux system.
+	The ps -p <PID> command is pretty straightforward to get the process information of a PID. 
+	The pwdx <PID> command will reveal the process file path
+	
+- lsof: lsof command stands for "List Open Files". This command provides a list of files that are opened. Basically, it gives the information to find out the files which are opened by which process. 	
+
+
+# LINUX TERMINAL - USER GROUPS AND PERMISSIONS
+- groupadd: command let you create a group which you can add any user into
+	groupadd "group_name"
+- groupdel: command to delete a groupd
+	groupdel "group_name"
+	
+- usermod: the command let you modify the details of a user. I.e, 
+	usermod -a -G "group_name" "user" - will add the user to the group without removing the user from any existing group (because of the -G flag)
+
+	
