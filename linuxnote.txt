@@ -51,6 +51,7 @@ Notes on Linux:
 - diff: diff command shows the difference between two files.
 - vim/nano: the command helps to open and edit files using vim / nano respectively
 - useradd: A command used to add a user 
+- adduser: Used to create a new user. It also prompts you to enter password and other details for the new user immediately, unlike the useradd command.
 - passwd: A command used to set password to a user
 - userdel / deluser: Delete a user account and related files. sudo deluser --remove-all-files user_name 
 - grep: Grep command is used to return. i.e. cat mytext.txt | grep es - will return contents with es; ls grep 01 will return files or directory with 01
@@ -59,6 +60,78 @@ Notes on Linux:
 
 # LINUX INODE (/df -i | /ls -i | /stat | /chmod | /In)
 - stat: running: stat filename will reveal the metadata of the file
+
+
+# LINUX - FILE PERMISSIONS
+
+File Permissions and Access Rights
+Understanding how to manage file permissions and ownership is crucial in Linux. This knowledge empowers you to control access to files and directories, ensuring the security and
+integrity of your systenm Let's explore some essential commands and concepts related to file permissions and ownership.
+In Linux, managing file permissions and ownership is vital for controlling who can access, modify, or execute files and directories. Understanding these concepts allows you to maintain
+the security and integrity of your system, Let's delve into the key commands and concepts related to file permissions and ownership.
+Numeric Representation of Permissions
+In Linux, permissions are represented using numeric values. Each permission (no permission, read, write, and execute) is assigned a numeric value:
+no permissions = O
+read = 4
+write = 2, and
+
+These values are combined to represent the permissions for each user class. Lets consider a few examples.
+Permissions Represented by 7
+(read) + 2 (write) + 1 (execute) = 7
+Symbolic: rwx
+Meaning: Read, write, and execute permissions are all granted.
+Example Context: A script file that the owner needs to read, modify, and execute.
+Permissions Represented by 5
+(read) + 1 (execute) = 5
+Symbolic: r-x
+Meaning: Read and execute permissions are granted, but write permission is not.
+Example Context: A shared library or a command tool that users can execute and read but not modify.
+Permissions Represented by 6
+(read) + 2 (write) = 6
+Symbolic: rw-
+Meaning: Read and write permissions are granted, but execute permission is not.
+Example Context: A document or a configuration file that the owner needs to read and modify but not execute.
+
+
+Shorthand Representation of Permissions* *
+In addition to the numeric way of showing permissions, Linux also has a shorthand, or symbolic, method for representing file permissions.
+Understanding User Classes from a Permissions Perspective
+Before diving into shorthand permissions, it's important to understand the concept of "user classes" in the context of Linux permissions. Think of user classes as categories of users that
+Linux recognizes when deciding who can do what with a file. There are three main classes:
+Owner: The person who created the file. Often referred to as 'user'.
+Group: A collection of users who share certain permissions for the file.
+Others: Anyone else who has access to the computer but doesn't fall into the first two categories.
+The Role of Hyphens (-) in Permission Representation
+When discussing permissions, you might notice hyphens (-) being mentioned. In the context of Linux file permissions, a hyphen doesn't actually represent a user class. Instead, it's
+used in the symbolic representation of permissions to show the absence of a permission.
+Lets get a bit practical with examples. Get onto your Linux terminal and run Is -latr
+
+❯ ls -latr
+total 24
+-rw-r--r--   1 dare  staff  6332 Jan 29 22:44 README.md
+drwxr-xr-x   7 dare  staff   224 Feb  4 11:56 Hands-On-Projects
+drwxr-xr-x   8 dare  staff   256 Feb  4 11:56 .
+-rwxr-xr-x   1 dare  staff   133 Feb  4 11:56 sync_img_to_s3.sh
+drwxr-xr-x  37 dare  staff  1184 Feb  4 12:52 image
+drwxr-xr-x   8 dare  staff   256 Feb  4 13:52 Quizzes
+drwxr-xr-x   5 dare  staff   160 Feb  5 09:28 ..
+drwxr-xr-x  15 dare  staff   480 Feb  6 21:34 .git
+
+
+Let's break it down to understand what each part means:
+In the output above, you will notice that some of the first character can be a - or d d means it's a directory, - means it's a file.
+The next three characters (rwx) show the permissions for the owner. r stands for read, w for write, and x for execute.
+If a permission is not granted, you'll see a - in its place (e.g., r-x means read and execute permissions are granted, but write permission is not).
+
+The hyphen separates, owner, group, and others
+The following three characters after the owner's permissions represent the group's permissions, using the same r, w, and x notation.
+The last three characters show the permissions for others.
+The order the user class is represented is as follow;
+The first hyphen " "
+- is the user
+The second hyphen "-" is the group
+The third hyphen "-" is others
+
 
 # LINUX TERMINAL FILE DESCRIPTORS AND REDIRECTIONS
 A file descriptor (FD, less frequently fildes) is a process-unique identifier (handle) for a file or other input/output resource, such as a pipe or network socket. Here are the three file descriptors:
@@ -85,4 +158,62 @@ Redirections: Redirection allows commands' file handles to be duplicated, opened
 - usermod: the command let you modify the details of a user. I.e, 
 	usermod -a -G "group_name" "user" - will add the user to the group without removing the user from any existing group (because of the -G flag)
 
+
+
+Some QUESTIONS/ANSWERS:
+
+What command installs software on a Red Hat/Fedora-based system?
+Ans => dnf install
+ 
+What command is used to update the package lists on a Debian-based Linux system?
+Ans => apt update 
+
+How would you uninstall a software package on a Red Hat/Fedora-based system using the package manager?
+Ans => yum remove package-name
+ 
+Which command is used to clean the package cache on a Debian/Ubuntu system?
+Ans => clean apt-cache
+
+To upgrade all installed packages on a Debian-based system, which command would you use?
+Ans => apt-get dist-upgrade
+
+
+To list files in a directory, which command would you use?
+Ans => ls
+
+How do you navigate to the home directory of the current user?
+Ans => cd ~ or cd
+
+Which command is used to remove a file in Linux?
+Ans => rm
+
+What command is used to create a new directory?
+Ans => mkdir
+
+How do you display the current working directory in the Linux terminal?
+Ans => pwd
+
+
+To remove read and write permissions for the group and others on a file, what command would you use?
+Ans => chmod go-rw file
+	g - group
+	o - others
+
+What command is used to change the ownership of a file in Linux?
+Ans => chown
+
+How would you give read, write, and execute permissions to the owner of a file?
+chmod u+rwx file
+	owner is the user of the file = u
+
+What command is used to set the sticky bit on a directory?
+Ans => chmod 1777
+
+Which command is used to change the group ownership of a file?
+Ans =>chgrp
+
+
+# ADVANCED FILE OPERATIONS
+	
+	
 	
