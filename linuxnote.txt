@@ -156,7 +156,7 @@ Redirections: Redirection allows commands' file handles to be duplicated, opened
 	groupdel "group_name"
 	
 - usermod: the command let you modify the details of a user. I.e, 
-	usermod -a -G "group_name" "user" - will add the user to the group without removing the user from any existing group (because of the -G flag)
+	usermod -aG "group_name" "user" - will add the user to the group without removing the user from any existing group (because of the -G flag)
 
 
 
@@ -214,6 +214,63 @@ Ans =>chgrp
 
 
 # ADVANCED FILE OPERATIONS
+ARCHIVING AND COMPRESSING OF FILES
+POPULAR METHODS OF ARCHIVING AND COMPRESSING:
+- ZIP: The fact that it is cross-platform accessible gives this method an advantage over others. You can access and open a zip file regardless of the operating system because Linux, Windows®, and MacOS® all support zip files by default.
+	$ zip -r <name of the zip file>.zip <directory or file(s) you want to compress>
+	To archive a single, we can use the following command:
+	$ zip example.zip examplefile.txt
+	
+	To add multiples or directory to the zip archive, we use:
+	$ zip -r example.zip /home/users/Pictures - -r is to add all the files in the directory recursively
+	
+	If you received a zipped file, use the unzip command to unzip it:
+	$ unzip examples.zip
+	
+	What if you want to unzip the file into your Pictures directory, and you are currently in a different directory?
+	$ unzip -r examples.zip -d /home/user/Pictures
+	Otherwise, the files will be extracted in the zipped directory
+
+- TAR: The tar command has a few more options than the zip command did. The most commonly used options for the tar command
+includes the following:
+
+    -c: creates a new .tar archive file
+    -v: verbosely shows the tar process so you can see all the steps in the process
+    -f: specifies the file name type of the archive file
+    -x: extracts files from an existing .tar file
+
+The following example shows the basic syntax of the tar command to create an archive:
+	$ tar -cvf examples.tar /home/user/Pictures
+	$ tar -cvf examples.tar ‘*.jpg’ - will add all the .jpg files in the archive
+
+To extract files from an archive in the same directory, use:
+	$ tar -xvf examples.tar /home/user/Pictures
+
+To extract files from an archive to a different directory, use:
+	$ tar -xvf examples.tar -C /path/to/desired/directory/location/
+	
+- TAR.GZ: Tar.gz files add compression to the archive function of the tar command by using the gzip function.
+	$ tar -zcvf <archive name>.tar.gz /directory/you/want/to/compress
+	OR
+	$ tar -zcvf <archive name>.tar.gz ‘*.jpg’
+ 
+
+
+# SHELL SCRIPTING
+- Shell Scripting: Is the process of writing and executing a series of instructions in a shell to automate tasks. A shell script is essentially a script or program written in a shell language, such as Bash, sh, zsh, or PowerShell.
+
+- The bash Shell Program: The command-line interface you type into is a Bash Shell. It's specificallt a running instance of the program found at /bin/bash. Bash is an sh-compatible command language interpreter.
+
+	A simple hello-world script:
+	
+	#! /bin/bash
+	target="World"
+	echo "Hello, ${target}"
+	
+	Bash Script can have comments. Using the hash (#) symbol before a code line will comment out the code. For example:
+	
+	# echo "Hello World!" - this line of code won't run because we've commented out the code using the # symbol.
+
 	
 	
 	
