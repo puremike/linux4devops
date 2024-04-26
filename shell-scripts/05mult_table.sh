@@ -18,6 +18,9 @@ elif [ $startNum -gt $endNum ]; then
         echo "$num x $i = $((num * i))"
     done
 
+else
+    echo "Invalid Numbers!"
+
 fi
 
 # C-Style For Loop
