@@ -1,0 +1,33 @@
+Install a Web Server on EC2
+Apache HTTP Server (httpd) is a widely used web server that serves HTML files and content over the internet. Installing it on Linux EC2 server allows you to host MarketPeak E-
+commerce site:
+Install Apache web server on the EC2 instance. Note that httpd is the software name for Apache on systems using yum package manager
+
+sudo yum update -y
+sudo yum install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
+
+This first updates the linux server and then installs httpd (Apache), starts the web server, and ensures it automatically starts on server boot.
+
+Configure httpd for Website
+To serve the website from the EC2 instance, configure httpd to point to the directory on the Linux server where the website code files are stored. Usually in /var/www html.
+
+Prepare the Web Directory: Clear the default httpd web directory and copy MarketPeak Ecommerce website files to it.
+
+sudo rm -rf /var/www/html/_
+sudo cp -r ~/MarketPeak_Ecommerce/_ /var/www/html/
+
+The directory /var/www/html/is a standard directory structure on Linux systems that host web content, particularly for the Apache HTTP Server.
+
+When you install Apache on a Linux system, the installation process automatically creates this directory. It's designated as the default document root in Apache's configuration,
+meaning that Apache is set up to serve web files (such as HTML, CSS, and JavaScript files) located in this directory to visitors of your website,
+
+Reload httpd: Apply the changes by reloading the httpd service.
+sudo systemctl reload httpd
+
+sudo systemctl reload httpd
+
+Access Website from Browser
+With httpd configured and website files in place, MarketPeak Ecommerce platform is now live on the internet:
+Open a web browser and access the public IP of your EC2 instance to view the deployed website.

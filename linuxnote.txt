@@ -271,6 +271,112 @@ To extract files from an archive to a different directory, use:
 	
 	# echo "Hello World!" - this line of code won't run because we've commented out the code using the # symbol.
 
+
+# HANDS-ON: VERSION CONTROL SYSTEM AND WHY IT IS NEEDED
+
+A Version Control System (VCS) is a vital tool in software development, designed to track and manage changes to code or documents over time. It enables multiple developers to collaborate on the same project efficiently, by controlling and merging changes made by different team members. 
+Imagine you're working in a team and your project is about creating a website for a an Al startup company. The website includes various sections like Home, About Us, Services, and Contact Information, Each member of your team is responsible for a different section of the site. Without a Version Control System (VCS), managing this collaboration efficiently would be challenging.
+
+Lets take a view of an example of working without a Version Control System. 
+
+Overwriting Work
+If a member "Tom" makes changes to the home page file "index.html" to update the navigation and at the same time, another team member "Jerry" makes changes to add contact information to the footer of the same home page thereby editing the same "index.html" file, Without VCSi the last person to upload their version of the file to the shared folder or server would overwrite the other person's changes, resulting in lost work.
+
+How VCS Solves These Problems
+Concurrent Development: With a VCS, each team member can work on their sections simultaneously without fear of overwriting each other's work. The VCS tracks all changes and manages different versions of the files, allowing changes to be merged together eventually. Lets go through an example together to simulate this experience using a VCS tool, "Git"
+
+Introducing Git: A Leading Version Control System
+Git is a tool that helps people work together on computer projects, like building a website. Think of it as a shared folder on your computer, but much smarter. It keeps track of all the changes everyone makes, so if something goes wrong, you can always go back to a version that worked. It also lets everyone work on their parts at the same time without getting in each other's way.
+When working on a project, especially with a team, it's easy for things to get mixed up if you're not careful. For example, if two people try to change the same thing at the same time, it could cause problems. 
+
+Git helps prevent these kinds of mix-ups.
+
+Conceptualising Git Set Up with Tom and Jerry
+
+1. Initial Setup:
+Both Tom and Jerry have Git installed on their computers. 
+They clone (or download) the project repository from a central repository (like GitHub, GitLab, or Bitbucket) to their local machines. This gives them each a complete copy of the project, including all its files and version history.
+
+2. Tom and Jerry Start Working:
+Tom and Jerry pull the latest changes from the central repository to ensure they start with the most current version of the index.html file. 
+They both create a new branch from the main project. A branch in Git allows developers to work on a copy of the codebase without affecting the main line of development. Tom names his branch update-navigation, and Jerry names his add-contact-info.
+
+3. Making Changes:
+On his branch, Tom updates the navigation bar in index.html.
+Simultaneously, Jerry works on his branch to add contact information to the footer of the same file.
+They commit their changes to their respective branches. A commit in Git is like saving your work with a note about what you've done.
+
+Merging Changes:
+Once they're done, Tom and Jerry push their branches to the central repository. 
+Tom decides to merge his changes first. He creates a pull request (PR) for his branch update-navigation. A PR is a way to tell the team that he's done and his code is ready to be reviewed and merged into the main project.
+After reviewing Tom's changes, the team merges his PR into the main branch, updating the index.html file on the main project line.
+Jerry then updates his branch with the latest changes from the main project to include Tom's updates. This step is crucial to ensure that Jerry is working with and integrating his changes into the most current version of the project.
+Jerry resolves any conflicts that arise from Tom's changes and his own. Git provides tools and commands to help identify and resolve these conflicts.
+Jerry then pushes his updated branch and creates a PR for his changes. The team reviews Jerry's additions, and once they're approved, his changes are merged into the main project.
+
+# GIT BRANCHING AND MERGING
+
+Part 3: Merging Changes 
+After both Tom and Jerry have pushed their changes, you (or another team member) can review and merge these changes into the main project. The process involves
+1. Creating a Pull Request
+2. Merging the Pull Request into the main branch.
+
+Understanding Pull Requests:
+A Pull Request (PR) is a feature used in GitHub (and other Gitbased version control systems) that allows you to notify team members about the changes you've pushed to a branch in a repository. Essentially, it's a request to review and pull in your contribution to the main project. Pull requests are central to the collaborative development process, enabling team members to discuss, review, and make further changes before changes are merged.
+
+How to Create a Pull Request on GitHub
+
+After both Tom and Jerry have pushed their work to their respective branches, the next step is to create a pull request for each of them. Here's how Tom would create a pull request for his changes:
+1. Navigate to Your GitHub Repository: Open your web browser and go to the GitHub page for the repository.
+2. Switch to the Branch: Click on the branch dropdown menu near the top left corner of the file list and select the branch Tom have been working on, in this case, update-navigation branch.
+3. Create New Pull Request: Click the "New pull request" button next to the branch dropdown menu.
+
+
+GitHub will take you to a new page to initiate a pull request. It automatically selects the main project's branch as the base and your recently pushed branch as the compare branch.
+4. Review Tom's Changes: Before creating the pull request, Tom would review his changes to ensure everything is correct. GitHub shows the differences between the base branch and Tom's branch. It's a good opportunity for Tom to double-check his work.
+
+5. Create the Pull Request: If everything looks good, click the "Create pull request" button. Provide a title and description for the pull request. The title should be concise and descriptive, and the description should explain the change that the pull request is about, why it's needed, and any other relevant details.
+After filling in the information, click 'Create pull request" again to officially open the pull request.
+
+Reviewing and Merging Tom's Pull Request 
+Once the pull request is created, it becomes visible to other team members who can review the changes, leave comments, and request additional modifications if necessary (This is an example of what collaboration is about in DevOps). When the team agrees that the changes are ready and good to go, someone with merge permissions can merge the pull request, incorporating the changes from Tom's update-navigation branch into the main branch.
+
+Following the same process, Jerry would create a pull request for his add-contact-info branch after Tom's changes have been merged, ensuring that the project stays up to date and conflicts are minimized Updating Jerry's Branch with Latest Changes
+Before Jerry merges his changes into the main branch, it's essential to ensure his branch is up-to-date with the main branch. This is because other changes (like Tom's updates) might have been merged into the
+main branch after Jerry started working on his feature. Updating ensures compatibility and reduces the chances of conflicts.
+
+Steps to Update Jerry's Branch:
+On the terminal, Switch to Jerry's Branch:
+	git checkout add-contact-info
+
+Pull the Latest Changes from the Main Branch:
+	git pull origin main
+
+Purpose: This command fetches the changes from the main branch (Remember, main branch now has Tom's changes) and merges them into Jerry's add-contact-info branch. It ensures that any updates made to the main branch, like Tom's merged changes, are now included in Jerrys branch. This step is crucial for avoiding conflicts and ensuring that Jerry's work can smoothly integrate with the main project.
+Merge the pull request to the main branch: Click the "Merge pull request" button to merge Tom's changes into the main branch. This action combines Tom's contributions with the rest of the project, completing the collaborative workflow.
+
+Finalizing Jerry's Contribution
+Assuming there are no conflicts, Jerry's branch is now ready to be merged back into the main project.
+
+Push the Updated Branch to GitHub:
+	git push origin add-contact-info
+This command uploads Jerry's changes to GitHub. Now, his branch reflects both his work and the latest updates from the main branch.
+
+The origin keyword in the command refers to the default name Git gives to the remote repository from which you cloned your project. It's like a shortcut or an alias for the full URL of the repository in GitHub.
+
+Create the Pull Request (PR) for Jerry's changes, similar to how you did for Tom.
+Merge Jerry's Pull Request. Complete the process by merging the PR into the main branch.
+
+This simulated workflow illustrates how Git facilitates collaborative development, allowing multiple developers to work simultaneously on different aspects of a project and merge their contributions seamlessly, even when working on the same files.
+
+
+
+
+
+Jamie's Work: Updating Events Page
+Repeat the same flow for Jamie's work on Events Page. Ensure Jamie's work is in update-events branch.
+Pull the latest changes from the main branch into update-events before raising the PR.
+
 	
 	
 	
