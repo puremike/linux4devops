@@ -9,15 +9,19 @@ read -p "Enter the ending number  (between 1 and 10): " endNum
 if [ $endNum -ge $startNum ]; then
     echo "The partial multiplication table for $num from $startNum to $endNum: "
     for ((i = $startNum; i <= $endNum; i++)); do
-        "$num x $i = "$((num * i))
+        echo "$num x $i = $((num * i))"
     done
 
 elif [ $startNum -gt $endNum ]; then
     echo -e "Invalid range. Showing full table instead. \nThe full multiplication table for $num:"
     for ((i = 1; i <= 10; i++)); do
-        "$num x $i = "$((num * i))
+        echo "$num x $i = $((num * i))"
     done
 
-else
-    echo "Invalid Numbers or Range of Numbers!"
 fi
+
+# C-Style For Loop
+
+for ((i = 1; i <= 10; i++)); do
+    echo "$num x $i = $((num * i))"
+done
