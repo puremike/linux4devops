@@ -27,3 +27,6 @@ create_ec2_instances() {
 
 # Call the function to create EC2 instances
 create_ec2_instances
+
+# Lets highlight some new areas:
+# $?: This is a special variable that holds the exit status of the last executed command. In this case, it checks if the aws ec2 run-instances command was successful. exit status that equals O is interpreted as successful. Therefore if exit code is "O", then echo the message to confirm that the previous command was successful. We have once again used environment variables to hold the value of ami_id, count and region and replaced with their respective values with $ami_id, $count and $region
