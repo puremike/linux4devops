@@ -987,3 +987,51 @@ Let's recall the hands-on project we did in our advanced techops curriculum. Now
 	On our EC2 instance, click on the security tab,
 	
 	Click on edit inbound rules to add new rules. This will allow incoming traffic to instance associated with the security group. Our aim is to allow incoming traffic on port 8080
+
+
+Introduction to Docker Containers
+
+Docker containers are lightweight, portable, and executable units that encapsulate an application and its dependencies. In the previous step, we worked a little with docker container. We would dive deep into the basics of working with Docker containers, from launching and running containers to managing their lifecycle.
+
+Running Containers
+To run a container, you use the 'docker run* command followed by the name of the image you want to use. 
+Recall that we pulled an ubuntu image from the official ubuntu repository on docker hub. Let's create a container from the ubuntu image. This command launches a container based on the Ubuntu image,
+
+docker run ubuntu
+
+To start running a container, we use:
+
+docker start CONTAINER_ID
+
+Launching Containers with Different Options
+Docker provides various options to customize the behavior of containers. For example, you can specify environment variables, map ports, and mount volumes. Here's an example of running a container with a specific environment variable:
+
+docker run -e "MY_VARIABLE=my-value" ubuntu
+
+Running Containers in the Background
+
+By default, containers run in the foreground, and the terminal is attached to the container's standard input/output. To run a container in the background, use the -d' option:
+
+docker run -d ubuntu
+This command starts a container in the background, allowing you to continue using the terminal.
+
+Container Lifecycle
+
+Containers have a lifecycle that includes creating, starting, stopping, and restarting. Once a container is created, it can be started and stopped multiple times. Starting, Stopping, and Restarting Containers.
+
+To start a stopped container:
+docker start container name
+
+To stop a running container:
+docker stop container name
+
+To restart a container:
+docker restart container name
+
+Removing Containers
+To remove a container, you use the docker rm' command followed by the container's ID or name:
+docker rm container name
+
+This deletes the container, but keep in mind that the associated image remains on your system. In this module, you've learned the basics of working with Docker containers—launching them, customizing their behavior, managing their lifecycle, and removing them.
+
+Understanding these fundamentals is crucial for effectively using Docker in your development and deployment workflows.
