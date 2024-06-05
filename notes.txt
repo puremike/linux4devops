@@ -1,4 +1,5 @@
-Notes on Linux:
+MY NOTES ON LINUX
+
 # LINUX COMMANDS:
 
 - tail: read the content of a file frm the last bottom. i.e tail -3 txt - reads the last 3 lines
@@ -241,7 +242,7 @@ includes the following:
 
 The following example shows the basic syntax of the tar command to create an archive:
 	$ tar -cvf examples.tar /home/user/Pictures
-	$ tar -cvf examples.tar ‘*.jpg’ - will add all the .jpg files in the archive
+	$ tar -cvf examples.tar '*.jpg' - will add all the .jpg files in the archive
 
 To extract files from an archive in the same directory, use:
 	$ tar -xvf examples.tar /home/user/Pictures
